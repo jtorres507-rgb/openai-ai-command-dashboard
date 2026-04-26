@@ -14,12 +14,16 @@ import {
   TrendingUp,
   Users,
   Zap,
+  DollarSign,
+  Target,
+  Server,
+  Workflow,
 } from "lucide-react";
 
-const metrics = [
-  { title: "Account Health", value: "86%", change: "+12%", icon: Gauge },
-  { title: "Active Users", value: "12.4K", change: "+31%", icon: Users },
-  { title: "AI Use Cases", value: "27", change: "+9", icon: Rocket },
+const executiveMetrics = [
+  { title: "Portfolio Health", value: "86%", change: "+12%", icon: Gauge },
+  { title: "Active AI Users", value: "12.4K", change: "+31%", icon: Users },
+  { title: "Live AI Use Cases", value: "27", change: "+9", icon: Rocket },
   { title: "Efficiency Gain", value: "31%", change: "+18%", icon: TrendingUp },
 ];
 
@@ -32,11 +36,100 @@ const adoption = [
   { label: "Jun", value: 84 },
 ];
 
+const customers = [
+  {
+    name: "Enterprise Logistics Co.",
+    owner: "Customer Success",
+    health: "Strong",
+    adoption: 84,
+    risk: "Low",
+    arr: "$420K",
+    opportunity: "$120K Expansion",
+    lastTouch: "2 days ago",
+  },
+  {
+    name: "Regional Finance Group",
+    owner: "Solutions",
+    health: "Moderate",
+    adoption: 61,
+    risk: "Medium",
+    arr: "$310K",
+    opportunity: "$80K Upsell",
+    lastTouch: "6 days ago",
+  },
+  {
+    name: "Healthcare Ops Team",
+    owner: "Technical Success",
+    health: "Strong",
+    adoption: 79,
+    risk: "Low",
+    arr: "$380K",
+    opportunity: "$95K Expansion",
+    lastTouch: "1 day ago",
+  },
+  {
+    name: "National Legal Services",
+    owner: "Deployment",
+    health: "At Risk",
+    adoption: 43,
+    risk: "High",
+    arr: "$250K",
+    opportunity: "$40K Retention",
+    lastTouch: "12 days ago",
+  },
+];
+
+const workflowPipeline = [
+  { name: "Support Ticket Triage", status: "Production", savings: "340 hrs/mo", roi: "High" },
+  { name: "Knowledge Assistant", status: "Pilot", savings: "180 hrs/mo", roi: "Medium" },
+  { name: "Document Review", status: "Security Review", savings: "420 hrs/mo", roi: "High" },
+  { name: "Sales Call Summaries", status: "Production", savings: "210 hrs/mo", roi: "Medium" },
+];
+
+const actionItems = [
+  {
+    severity: "High",
+    title: "Finance team adoption below threshold",
+    detail: "Run a 14-day enablement sprint focused on prompt workflows and champion support.",
+  },
+  {
+    severity: "Medium",
+    title: "Legal workflow blocked by policy review",
+    detail: "Schedule security and compliance review before production activation.",
+  },
+  {
+    severity: "Low",
+    title: "Logistics account ready for expansion",
+    detail: "Scale successful automation playbook into dispatch and customer support teams.",
+  },
+];
+
+function Pill({ value }) {
+  const styles = {
+    Strong: "bg-emerald-100 text-emerald-700",
+    Moderate: "bg-amber-100 text-amber-700",
+    "At Risk": "bg-red-100 text-red-700",
+    Low: "bg-emerald-100 text-emerald-700",
+    Medium: "bg-amber-100 text-amber-700",
+    High: "bg-red-100 text-red-700",
+    Production: "bg-emerald-100 text-emerald-700",
+    Pilot: "bg-blue-100 text-blue-700",
+    "Security Review": "bg-amber-100 text-amber-700",
+  };
+
+  return (
+    <span className={`rounded-full px-3 py-1 text-xs font-bold ${styles[value] || "bg-slate-100 text-slate-700"}`}>
+      {value}
+    </span>
+  );
+}
+
 function Sidebar({ activePage, setActivePage }) {
   const links = [
     { name: "Executive Overview", icon: LayoutDashboard },
     { name: "Customer Health", icon: Building2 },
     { name: "AI Performance", icon: Brain },
+    { name: "Workflow Pipeline", icon: Workflow },
     { name: "Action Center", icon: Lightbulb },
   ];
 
@@ -62,9 +155,7 @@ function Sidebar({ activePage, setActivePage }) {
               key={link.name}
               onClick={() => setActivePage(link.name)}
               className={`flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left text-sm font-semibold transition ${
-                active
-                  ? "bg-white text-slate-950"
-                  : "text-slate-300 hover:bg-slate-800"
+                active ? "bg-white text-slate-950" : "text-slate-300 hover:bg-slate-800"
               }`}
             >
               <Icon size={19} />
@@ -75,21 +166,17 @@ function Sidebar({ activePage, setActivePage }) {
       </nav>
 
       <div className="mt-10 rounded-2xl border border-slate-800 bg-slate-900 p-4">
-        <p className="text-xs font-semibold uppercase text-slate-400">
-          Portfolio Demo
-        </p>
+        <p className="text-xs font-semibold uppercase text-slate-400">Portfolio Demo</p>
         <p className="mt-2 text-sm text-slate-300">
-          Built to demonstrate AI adoption strategy, customer health analytics,
-          model performance tracking, and enterprise deployment readiness.
+          React + Tailwind + Vite + Vercel project demonstrating AI adoption strategy,
+          customer health analytics, and enterprise deployment readiness.
         </p>
       </div>
     </aside>
   );
 }
 
-function MetricCard({ item }) {
-  const Icon = item.icon;
-
+function MetricCard({ title, value, change, icon: Icon }) {
   return (
     <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
       <div className="flex items-center justify-between">
@@ -97,11 +184,11 @@ function MetricCard({ item }) {
           <Icon size={23} />
         </div>
         <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-700">
-          {item.change}
+          {change}
         </span>
       </div>
-      <p className="mt-5 text-sm text-slate-500">{item.title}</p>
-      <p className="mt-1 text-3xl font-bold text-slate-950">{item.value}</p>
+      <p className="mt-5 text-sm text-slate-500">{title}</p>
+      <p className="mt-1 text-3xl font-bold text-slate-950">{value}</p>
     </div>
   );
 }
@@ -114,10 +201,7 @@ function ProgressBar({ label, value }) {
         <span>{value}%</span>
       </div>
       <div className="h-4 rounded-full bg-slate-200">
-        <div
-          className="h-4 rounded-full bg-slate-950 transition-all"
-          style={{ width: `${value}%` }}
-        />
+        <div className="h-4 rounded-full bg-slate-950" style={{ width: `${value}%` }} />
       </div>
     </div>
   );
@@ -127,18 +211,15 @@ function ExecutiveOverview() {
   return (
     <>
       <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-        {metrics.map((item) => (
-          <MetricCard key={item.title} item={item} />
+        {executiveMetrics.map((item) => (
+          <MetricCard key={item.title} {...item} />
         ))}
       </div>
 
       <div className="mt-8 grid gap-6 xl:grid-cols-3">
         <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm xl:col-span-2">
           <h2 className="text-2xl font-bold">Adoption Velocity</h2>
-          <p className="text-slate-600">
-            Monthly AI platform adoption across enterprise teams.
-          </p>
-
+          <p className="text-slate-600">Monthly AI platform adoption across enterprise teams.</p>
           <div className="mt-6 space-y-5">
             {adoption.map((item) => (
               <ProgressBar key={item.label} label={item.label} value={item.value} />
@@ -150,10 +231,8 @@ function ExecutiveOverview() {
           <Activity size={30} />
           <h2 className="mt-4 text-2xl font-bold">Deployment Readiness</h2>
           <p className="mt-2 text-slate-300">
-            Current portfolio is ready for expanded rollout across three
-            validated workflow categories.
+            Current portfolio is ready for expanded rollout across validated workflow categories.
           </p>
-
           <div className="mt-6 space-y-3 text-sm">
             <p>✅ Executive sponsor aligned</p>
             <p>✅ Champion group identified</p>
@@ -162,50 +241,62 @@ function ExecutiveOverview() {
           </div>
         </div>
       </div>
+
+      <div className="mt-8 grid gap-6 md:grid-cols-3">
+        <div className="rounded-2xl bg-white p-6 shadow-sm border">
+          <DollarSign />
+          <p className="mt-4 text-sm text-slate-500">Expansion Pipeline</p>
+          <p className="text-3xl font-bold">$335K</p>
+        </div>
+        <div className="rounded-2xl bg-white p-6 shadow-sm border">
+          <Target />
+          <p className="mt-4 text-sm text-slate-500">Validated Workflows</p>
+          <p className="text-3xl font-bold">42</p>
+        </div>
+        <div className="rounded-2xl bg-white p-6 shadow-sm border">
+          <Server />
+          <p className="mt-4 text-sm text-slate-500">Production Systems</p>
+          <p className="text-3xl font-bold">18</p>
+        </div>
+      </div>
     </>
   );
 }
 
 function CustomerHealth() {
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-      <h2 className="text-2xl font-bold mb-4">Customer Health Intelligence</h2>
+    <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm overflow-x-auto">
+      <h2 className="text-2xl font-bold">Customer Health Intelligence</h2>
+      <p className="mt-2 text-slate-600">
+        Portfolio-level account intelligence for adoption, retention risk, expansion, and technical success ownership.
+      </p>
 
-      <table className="w-full text-left">
+      <table className="mt-6 w-full min-w-[900px] text-left">
         <thead>
           <tr className="border-b text-sm text-slate-500">
-            <th className="py-2">Customer</th>
+            <th className="py-3">Customer</th>
+            <th>Owner</th>
             <th>Health</th>
             <th>Adoption</th>
             <th>Risk</th>
+            <th>ARR</th>
             <th>Opportunity</th>
+            <th>Last Touch</th>
           </tr>
         </thead>
-
         <tbody className="text-sm">
-          <tr className="border-b">
-            <td className="py-3 font-medium">Enterprise Logistics Co.</td>
-            <td className="text-green-600 font-semibold">Strong</td>
-            <td>84%</td>
-            <td>Low</td>
-            <td>$120K Expansion</td>
-          </tr>
-
-          <tr className="border-b">
-            <td className="py-3 font-medium">Regional Finance Group</td>
-            <td className="text-yellow-600 font-semibold">Moderate</td>
-            <td>61%</td>
-            <td>Medium</td>
-            <td>$80K Upsell</td>
-          </tr>
-
-          <tr>
-            <td className="py-3 font-medium">Healthcare Ops Team</td>
-            <td className="text-green-600 font-semibold">Strong</td>
-            <td>79%</td>
-            <td>Low</td>
-            <td>$95K Expansion</td>
-          </tr>
+          {customers.map((customer) => (
+            <tr key={customer.name} className="border-b last:border-0">
+              <td className="py-4 font-semibold">{customer.name}</td>
+              <td>{customer.owner}</td>
+              <td><Pill value={customer.health} /></td>
+              <td>{customer.adoption}%</td>
+              <td><Pill value={customer.risk} /></td>
+              <td className="font-semibold">{customer.arr}</td>
+              <td>{customer.opportunity}</td>
+              <td>{customer.lastTouch}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
@@ -214,56 +305,78 @@ function CustomerHealth() {
 
 function AIPerformance() {
   const modelMetrics = [
-    { label: "LLM Accuracy", value: "92%", icon: CheckCircle },
-    { label: "Hallucination Rate", value: "4%", icon: AlertTriangle },
-    { label: "Response Time", value: "1.2s", icon: Clock },
-    { label: "Prompt Optimization Gain", value: "+18%", icon: Zap },
+    { title: "LLM Accuracy", value: "92%", change: "+7%", icon: CheckCircle },
+    { title: "Hallucination Rate", value: "4%", change: "-3%", icon: AlertTriangle },
+    { title: "Response Time", value: "1.2s", change: "-0.4s", icon: Clock },
+    { title: "Prompt Gain", value: "+18%", change: "Optimized", icon: Zap },
   ];
 
   return (
     <>
       <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
         {modelMetrics.map((item) => (
-          <div
-            key={item.label}
-            className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
-          >
-            <div className="rounded-xl bg-slate-100 p-3 w-fit">
-              <item.icon size={23} />
-            </div>
-            <p className="mt-5 text-sm text-slate-500">{item.label}</p>
-            <p className="mt-1 text-3xl font-bold text-slate-950">
-              {item.value}
-            </p>
-          </div>
+          <MetricCard key={item.title} {...item} />
         ))}
       </div>
 
-      <div className="mt-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-        <h2 className="text-2xl font-bold">Model Performance & Accuracy</h2>
-        <p className="mt-2 text-slate-600">
-          Simulated AI observability layer for monitoring quality, speed,
-          prompt performance, and enterprise readiness.
-        </p>
-
-        <div className="mt-6 grid gap-5 md:grid-cols-3">
-          <div className="rounded-xl bg-slate-100 p-5">
-            <p className="text-sm text-slate-500">Token Usage</p>
-            <p className="text-3xl font-bold">1.8M</p>
+      <div className="mt-8 grid gap-6 xl:grid-cols-2">
+        <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <h2 className="text-2xl font-bold">AI System Observability</h2>
+          <p className="mt-2 text-slate-600">
+            Operational signals for enterprise AI deployment monitoring.
+          </p>
+          <div className="mt-6 grid gap-5 md:grid-cols-3">
+            <div className="rounded-xl bg-slate-100 p-5">
+              <p className="text-sm text-slate-500">Token Usage</p>
+              <p className="text-3xl font-bold">1.8M</p>
+            </div>
+            <div className="rounded-xl bg-slate-100 p-5">
+              <p className="text-sm text-slate-500">Escalations Avoided</p>
+              <p className="text-3xl font-bold">312</p>
+            </div>
+            <div className="rounded-xl bg-slate-100 p-5">
+              <p className="text-sm text-slate-500">Hours Saved</p>
+              <p className="text-3xl font-bold">740</p>
+            </div>
           </div>
+        </div>
 
-          <div className="rounded-xl bg-slate-100 p-5">
-            <p className="text-sm text-slate-500">Escalations Avoided</p>
-            <p className="text-3xl font-bold">312</p>
-          </div>
-
-          <div className="rounded-xl bg-slate-100 p-5">
-            <p className="text-sm text-slate-500">Workflow Hours Saved</p>
-            <p className="text-3xl font-bold">740</p>
+        <div className="rounded-2xl border border-slate-200 bg-slate-950 p-6 text-white shadow-sm">
+          <h2 className="text-2xl font-bold">Model Improvement Notes</h2>
+          <div className="mt-5 space-y-4 text-sm text-slate-300">
+            <p>✅ Prompt templates improved response consistency across support workflows.</p>
+            <p>✅ Retrieval quality improved after narrowing knowledge-base scope.</p>
+            <p>⚠️ Finance workflows require compliance review before broad rollout.</p>
+            <p>📈 Reduced manual escalation load by routing repetitive questions to AI assistant.</p>
           </div>
         </div>
       </div>
     </>
+  );
+}
+
+function WorkflowPipeline() {
+  return (
+    <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+      <h2 className="text-2xl font-bold">Workflow Automation Pipeline</h2>
+      <p className="mt-2 text-slate-600">
+        Tracks AI workflow candidates from discovery through production deployment.
+      </p>
+
+      <div className="mt-6 grid gap-4">
+        {workflowPipeline.map((workflow) => (
+          <div
+            key={workflow.name}
+            className="grid gap-4 rounded-xl border border-slate-200 p-5 md:grid-cols-4 md:items-center"
+          >
+            <div className="font-semibold">{workflow.name}</div>
+            <div><Pill value={workflow.status} /></div>
+            <div className="text-sm text-slate-600">Savings: <strong>{workflow.savings}</strong></div>
+            <div className="text-sm text-slate-600">ROI: <strong>{workflow.roi}</strong></div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -292,17 +405,15 @@ function ActionCenter() {
         </div>
 
         <div className="mt-5 space-y-4">
-          <div className="rounded-xl border border-amber-200 bg-amber-50 p-4">
-            Finance team adoption is below target. Recommend enablement sprint.
-          </div>
-
-          <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
-            Legal use case requires additional policy review before production.
-          </div>
-
-          <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-4">
-            Logistics account ready for expanded workflow automation rollout.
-          </div>
+          {actionItems.map((item) => (
+            <div key={item.title} className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+              <div className="mb-2">
+                <Pill value={item.severity} />
+              </div>
+              <h3 className="font-bold">{item.title}</h3>
+              <p className="mt-1 text-sm text-slate-600">{item.detail}</p>
+            </div>
+          ))}
         </div>
       </div>
     </div>
@@ -315,8 +426,8 @@ export default function App() {
   const renderPage = () => {
     if (activePage === "Customer Health") return <CustomerHealth />;
     if (activePage === "AI Performance") return <AIPerformance />;
+    if (activePage === "Workflow Pipeline") return <WorkflowPipeline />;
     if (activePage === "Action Center") return <ActionCenter />;
-
     return <ExecutiveOverview />;
   };
 
@@ -333,13 +444,16 @@ export default function App() {
           <h1 className="mt-2 text-4xl font-bold md:text-5xl">{activePage}</h1>
 
           <p className="mt-3 max-w-4xl text-slate-600">
-            Enterprise AI command center for monitoring account health, adoption
-            velocity, model performance, workflow opportunities, and measurable
-            business value.
+            Enterprise AI success platform for monitoring account health, adoption velocity,
+            model performance, workflow opportunities, expansion risk, and measurable business value.
           </p>
         </div>
 
         {renderPage()}
+
+        <footer className="mt-10 text-sm text-slate-500">
+          Built with React, Vite, Tailwind CSS, GitHub, and Vercel.
+        </footer>
       </main>
     </div>
   );
