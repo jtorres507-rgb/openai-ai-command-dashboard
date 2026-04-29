@@ -210,54 +210,120 @@ function ProgressBar({ label, value }) {
 function ExecutiveOverview() {
   return (
     <>
+      {/* TOP KPI COMMAND STRIP */}
       <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-      {executivePortfolioKPIs.map((item) => (
-          <MetricCard key={item.title} {...item} />
+        {executivePortfolioKPIs.map((item) => (
+          <div
+            key={item.title}
+            className="rounded-3xl border border-slate-700 bg-slate-800/90 p-5 shadow-lg shadow-black/20"
+          >
+            <div className="flex items-center justify-between">
+              <div className="rounded-2xl bg-slate-700 p-3">
+                <item.icon size={22} />
+              </div>
+              <span className="rounded-full bg-emerald-500/20 px-3 py-1 text-xs font-semibold text-emerald-300">
+                {item.change}
+              </span>
+            </div>
+            <p className="mt-5 text-sm text-slate-400">{item.title}</p>
+            <p className="mt-1 text-3xl font-bold text-white">{item.value}</p>
+          </div>
         ))}
       </div>
 
-      <div className="mt-8 grid gap-6 xl:grid-cols-3">
-        <div className="rounded-2xl border border-slate-700 bg-white p-6 shadow-sm xl:col-span-2">
-          <h2 className="text-2xl font-bold">Adoption Velocity</h2>
-          <p className="text-slate-300">Monthly AI platform adoption across enterprise teams.</p>
-          <div className="mt-6 space-y-5">
+      {/* MAIN COMMAND GRID */}
+      <div className="mt-8 grid gap-6 xl:grid-cols-12">
+
+        {/* LEFT LARGE INTELLIGENCE PANEL */}
+        <div className="xl:col-span-7 rounded-3xl border border-slate-700 bg-slate-800/90 p-7 shadow-lg shadow-black/20">
+          <div className="flex items-center justify-between">
+            <div>
+              <h2 className="text-2xl font-bold text-white">Enterprise Adoption Intelligence</h2>
+              <p className="text-sm text-slate-400">AI enablement velocity across strategic business units</p>
+            </div>
+            <div className="rounded-2xl bg-cyan-500/10 px-4 py-2 text-cyan-300 text-xs font-semibold">
+              LIVE TRACKING
+            </div>
+          </div>
+
+          <div className="mt-8 space-y-5">
             {adoptionVelocity.map((item) => (
-              <ProgressBar key={item.label} label={item.label} value={item.value} />
+              <div key={item.label}>
+                <div className="mb-2 flex justify-between text-sm">
+                  <span>{item.label}</span>
+                  <span className="text-cyan-300">{item.value}%</span>
+                </div>
+                <div className="h-3 rounded-full bg-slate-700">
+                  <div
+                    className="h-3 rounded-full bg-cyan-400 shadow-md shadow-cyan-500/30"
+                    style={{ width: `${item.value}%` }}
+                  />
+                </div>
+              </div>
             ))}
           </div>
-        </div>
 
-        <div className="rounded-2xl border border-slate-700 bg-slate-800 p-6 text-white shadow-sm">
-          <Activity size={30} />
-          <h2 className="mt-4 text-2xl font-bold">Deployment Readiness</h2>
-          <p className="mt-2 text-slate-300">
-            Current portfolio is ready for expanded rollout across validated workflow categories.
-          </p>
-          <div className="mt-6 space-y-3 text-sm">
-            <p>✅ Executive sponsor aligned</p>
-            <p>✅ Champion group identified</p>
-            <p>✅ KPI baseline established</p>
-            <p>⚠️ Security review pending for finance team</p>
+          <div className="mt-10 grid gap-4 md:grid-cols-3">
+            <div className="rounded-2xl bg-slate-700/60 p-4">
+              <p className="text-xs text-slate-400">Expansion Pipeline</p>
+              <p className="mt-2 text-2xl font-bold">$335K</p>
+            </div>
+            <div className="rounded-2xl bg-slate-700/60 p-4">
+              <p className="text-xs text-slate-400">Validated Workflows</p>
+              <p className="mt-2 text-2xl font-bold">42</p>
+            </div>
+            <div className="rounded-2xl bg-slate-700/60 p-4">
+              <p className="text-xs text-slate-400">Production Systems</p>
+              <p className="mt-2 text-2xl font-bold">18</p>
+            </div>
           </div>
         </div>
+
+        {/* RIGHT DEPLOYMENT PANEL */}
+        <div className="xl:col-span-5 rounded-3xl border border-slate-700 bg-slate-800/90 p-7 shadow-lg shadow-black/20">
+          <div className="flex items-center gap-3">
+            <Activity className="text-emerald-300" size={24} />
+            <h2 className="text-2xl font-bold text-white">Deployment Readiness Matrix</h2>
+          </div>
+
+          <p className="mt-3 text-sm text-slate-400">
+            Portfolio rollout confidence and enterprise activation readiness.
+          </p>
+
+          <div className="mt-8 space-y-4">
+            <div className="rounded-2xl bg-slate-700/60 p-4">✅ Executive sponsor aligned</div>
+            <div className="rounded-2xl bg-slate-700/60 p-4">✅ Champion network identified</div>
+            <div className="rounded-2xl bg-slate-700/60 p-4">✅ KPI baseline established</div>
+            <div className="rounded-2xl bg-amber-500/10 p-4 text-amber-300">⚠ Security review pending</div>
+            <div className="rounded-2xl bg-slate-700/60 p-4">✅ Expansion use cases approved</div>
+          </div>
+        </div>
+
       </div>
 
-      <div className="mt-8 grid gap-6 md:grid-cols-3">
-        <div className="rounded-2xl bg-slate-800 p-6 shadow-sm border">
-          <DollarSign />
-          <p className="mt-4 text-sm text-slate-500">Expansion Pipeline</p>
-          <p className="text-3xl font-bold">$335K</p>
+      {/* LOWER GRID */}
+      <div className="mt-8 grid gap-6 xl:grid-cols-12">
+
+        <div className="xl:col-span-7 rounded-3xl border border-slate-700 bg-slate-800/90 p-7 shadow-lg shadow-black/20">
+          <h2 className="text-2xl font-bold text-white">Executive AI Success Recommendations</h2>
+          <div className="mt-6 space-y-4 text-sm">
+            <div className="rounded-2xl bg-slate-700/60 p-4">🚀 Expand Finance deployment into document workflows</div>
+            <div className="rounded-2xl bg-slate-700/60 p-4">⚠ Resolve legal security gating before production activation</div>
+            <div className="rounded-2xl bg-slate-700/60 p-4">📈 Scale Logistics assistant to support teams</div>
+            <div className="rounded-2xl bg-slate-700/60 p-4">🧠 Prompt optimization opportunity identified</div>
+          </div>
         </div>
-        <div className="rounded-2xl bg-slate-800 p-6 shadow-sm border">
-          <Target />
-          <p className="mt-4 text-sm text-slate-500">Validated Workflows</p>
-          <p className="text-3xl font-bold">42</p>
+
+        <div className="xl:col-span-5 rounded-3xl border border-slate-700 bg-slate-800/90 p-7 shadow-lg shadow-black/20">
+          <h2 className="text-2xl font-bold text-white">AI Success Assistant</h2>
+          <div className="mt-6 rounded-3xl bg-slate-700/50 p-5 text-sm text-slate-300 leading-7">
+            <p>• 3 enterprise accounts are expansion-ready this quarter</p>
+            <p>• 1 deployment requires security intervention</p>
+            <p>• projected retained ARR confidence: high</p>
+            <p>• recommended executive action: approve finance pilot acceleration</p>
+          </div>
         </div>
-        <div className="rounded-2xl bg-slate-800 p-6 shadow-sm border">
-          <Server />
-          <p className="mt-4 text-sm text-slate-500">Production Systems</p>
-          <p className="text-3xl font-bold">18</p>
-        </div>
+
       </div>
     </>
   );
