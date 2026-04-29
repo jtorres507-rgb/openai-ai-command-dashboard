@@ -136,7 +136,7 @@ function Sidebar({ activePage, setActivePage }) {
   return (
     <aside className="hidden min-h-screen w-72 border-r border-slate-800 bg-slate-950 p-6 text-white lg:block">
       <div className="flex items-center gap-3">
-        <div className="rounded-2xl bg-white p-3 text-slate-950">
+        <div className="rounded-2xl bg-slate-900 p-3 text-slate-950">
           <Brain size={26} />
         </div>
         <div>
@@ -155,7 +155,7 @@ function Sidebar({ activePage, setActivePage }) {
               key={link.name}
               onClick={() => setActivePage(link.name)}
               className={`flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left text-sm font-semibold transition ${
-                active ? "bg-white text-slate-950" : "text-slate-300 hover:bg-slate-800"
+                active ? "bg-slate-900 text-slate-950" : "text-slate-300 hover:bg-slate-800"
               }`}
             >
               <Icon size={19} />
@@ -178,17 +178,17 @@ function Sidebar({ activePage, setActivePage }) {
 
 function MetricCard({ title, value, change, icon: Icon }) {
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+    <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6 shadow-xl">
       <div className="flex items-center justify-between">
-        <div className="rounded-xl bg-slate-100 p-3">
+        <div className="rounded-xl bg-slate-800 p-3">
           <Icon size={23} />
         </div>
         <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-700">
           {change}
         </span>
       </div>
-      <p className="mt-5 text-sm text-slate-500">{title}</p>
-      <p className="mt-1 text-3xl font-bold text-slate-950">{value}</p>
+      <p className="mt-5 text-sm text-slate-400">{title}</p>
+      <p className="mt-1 text-3xl font-bold text-white">{value}</p>
     </div>
   );
 }
@@ -217,9 +217,9 @@ function ExecutiveOverview() {
       </div>
 
       <div className="mt-8 grid gap-6 xl:grid-cols-3">
-        <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm xl:col-span-2">
+        <div className="rounded-2xl border border-slate-800 bg-white p-6 shadow-sm xl:col-span-2">
           <h2 className="text-2xl font-bold">Adoption Velocity</h2>
-          <p className="text-slate-600">Monthly AI platform adoption across enterprise teams.</p>
+          <p className="text-slate-300">Monthly AI platform adoption across enterprise teams.</p>
           <div className="mt-6 space-y-5">
             {adoptionVelocity.map((item) => (
               <ProgressBar key={item.label} label={item.label} value={item.value} />
@@ -227,7 +227,7 @@ function ExecutiveOverview() {
           </div>
         </div>
 
-        <div className="rounded-2xl border border-slate-200 bg-slate-950 p-6 text-white shadow-sm">
+        <div className="rounded-2xl border border-slate-800 bg-slate-950 p-6 text-white shadow-sm">
           <Activity size={30} />
           <h2 className="mt-4 text-2xl font-bold">Deployment Readiness</h2>
           <p className="mt-2 text-slate-300">
@@ -243,17 +243,17 @@ function ExecutiveOverview() {
       </div>
 
       <div className="mt-8 grid gap-6 md:grid-cols-3">
-        <div className="rounded-2xl bg-white p-6 shadow-sm border">
+        <div className="rounded-2xl bg-slate-900 p-6 shadow-sm border">
           <DollarSign />
           <p className="mt-4 text-sm text-slate-500">Expansion Pipeline</p>
           <p className="text-3xl font-bold">$335K</p>
         </div>
-        <div className="rounded-2xl bg-white p-6 shadow-sm border">
+        <div className="rounded-2xl bg-slate-900 p-6 shadow-sm border">
           <Target />
           <p className="mt-4 text-sm text-slate-500">Validated Workflows</p>
           <p className="text-3xl font-bold">42</p>
         </div>
-        <div className="rounded-2xl bg-white p-6 shadow-sm border">
+        <div className="rounded-2xl bg-slate-900 p-6 shadow-sm border">
           <Server />
           <p className="mt-4 text-sm text-slate-500">Production Systems</p>
           <p className="text-3xl font-bold">18</p>
@@ -265,9 +265,9 @@ function ExecutiveOverview() {
 
 function CustomerHealth() {
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm overflow-x-auto">
+    <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6 shadow-sm overflow-x-auto">
       <h2 className="text-2xl font-bold">Customer Health Intelligence</h2>
-      <p className="mt-2 text-slate-600">
+      <p className="mt-2 text-slate-300">
         Portfolio-level account intelligence for adoption, retention risk, expansion, and technical success ownership.
       </p>
 
@@ -320,9 +320,9 @@ function AIPerformance() {
       </div>
 
       <div className="mt-8 grid gap-6 xl:grid-cols-2">
-        <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+        <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6 shadow-sm">
           <h2 className="text-2xl font-bold">AI System Observability</h2>
-          <p className="mt-2 text-slate-600">
+          <p className="mt-2 text-slate-300">
             Operational signals for enterprise AI deployment monitoring.
           </p>
           <div className="mt-6 grid gap-5 md:grid-cols-3">
@@ -341,7 +341,7 @@ function AIPerformance() {
           </div>
         </div>
 
-        <div className="rounded-2xl border border-slate-200 bg-slate-950 p-6 text-white shadow-sm">
+        <div className="rounded-2xl border border-slate-800 bg-slate-950 p-6 text-white shadow-sm">
           <h2 className="text-2xl font-bold">Model Improvement Notes</h2>
           <div className="mt-5 space-y-4 text-sm text-slate-300">
             <p>✅ Prompt templates improved response consistency across support workflows.</p>
@@ -357,9 +357,9 @@ function AIPerformance() {
 
 function WorkflowPipeline() {
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+    <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6 shadow-sm">
       <h2 className="text-2xl font-bold">Workflow Automation Pipeline</h2>
-      <p className="mt-2 text-slate-600">
+      <p className="mt-2 text-slate-300">
         Tracks AI workflow candidates from discovery through production deployment.
       </p>
 
@@ -367,12 +367,12 @@ function WorkflowPipeline() {
         {deploymentPrograms.map((workflow) => (
           <div
             key={workflow.name}
-            className="grid gap-4 rounded-xl border border-slate-200 p-5 md:grid-cols-4 md:items-center"
+            className="grid gap-4 rounded-xl border border-slate-800 p-5 md:grid-cols-4 md:items-center"
           >
             <div className="font-semibold">{workflow.name}</div>
             <div><Pill value={workflow.status} /></div>
-            <div className="text-sm text-slate-600">Savings: <strong>{workflow.savings}</strong></div>
-            <div className="text-sm text-slate-600">ROI: <strong>{workflow.roi}</strong></div>
+            <div className="text-sm text-slate-300">Savings: <strong>{workflow.savings}</strong></div>
+            <div className="text-sm text-slate-300">ROI: <strong>{workflow.roi}</strong></div>
           </div>
         ))}
       </div>
@@ -383,7 +383,7 @@ function WorkflowPipeline() {
 function ActionCenter() {
   return (
     <div className="grid gap-6 xl:grid-cols-2">
-      <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+      <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6 shadow-sm">
         <div className="flex items-center gap-3">
           <Lightbulb />
           <h2 className="text-2xl font-bold">AI Success Recommendations</h2>
@@ -398,7 +398,7 @@ function ActionCenter() {
         </ul>
       </div>
 
-      <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+      <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6 shadow-sm">
         <div className="flex items-center gap-3">
           <ShieldCheck />
           <h2 className="text-2xl font-bold">Intervention Queue</h2>
@@ -406,12 +406,12 @@ function ActionCenter() {
 
         <div className="mt-5 space-y-4">
           {interventionQueue.map((item) => (
-            <div key={item.title} className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+            <div key={item.title} className="rounded-xl border border-slate-800 bg-slate-50 p-4">
               <div className="mb-2">
                 <Pill value={item.severity} />
               </div>
               <h3 className="font-bold">{item.title}</h3>
-              <p className="mt-1 text-sm text-slate-600">{item.detail}</p>
+              <p className="mt-1 text-sm text-slate-300">{item.detail}</p>
             </div>
           ))}
         </div>
@@ -435,23 +435,24 @@ export default function App() {
     <div className="min-h-screen bg-slate-950 text-white lg:flex">
       <Sidebar activePage={activePage} setActivePage={setActivePage} />
 
-      <main className="flex-1 p-6 md:p-10">
+      <main className="flex-1 p-6 md:p-10 bg-slate-950">
         <div className="mb-8">
-          <p className="text-sm font-bold uppercase tracking-wide text-slate-500">
-            OpenAI AI Success Engineer Portfolio Project
+          <p className="text-sm font-bold uppercase tracking-[0.2em] text-emerald-400">
+                ENTERPRISE AI SUCCESS COMMAND PLATFORM
           </p>
 
-          <h1 className="mt-2 text-4xl font-bold md:text-5xl">{activePage}</h1>
+          <h1 className="mt-2 text-4xl font-bold text-white md:text-5xl">{activePage}</h1>
 
-          <p className="mt-3 max-w-4xl text-slate-600">
-            Enterprise AI success platform for monitoring account health, adoption velocity,
-            model performance, workflow opportunities, expansion risk, and measurable business value.
+          <p className="mt-4 max-w-5xl text-slate-300 leading-8">
+              Monitoring enterprise customer deployment maturity, AI workflow scalability,
+              executive intervention signals, production readiness, and measurable portfolio value realization
+              across strategic customer accounts.
           </p>
         </div>
 
         {renderPage()}
 
-        <footer className="mt-10 text-sm text-slate-500">
+        <footer className="mt-10 text-sm text-slate-600">
           Built with React, Vite, Tailwind CSS, GitHub, and Vercel.
         </footer>
       </main>
