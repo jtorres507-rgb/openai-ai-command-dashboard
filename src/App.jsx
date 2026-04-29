@@ -87,7 +87,7 @@ const deploymentPrograms = [
 ];
 
 const metalPanel =
-  "relative overflow-hidden rounded-3xl border border-white/10 bg-[linear-gradient(145deg,rgba(30,41,59,0.88),rgba(15,23,42,0.96)_45%,rgba(51,65,85,0.72))] shadow-[inset_0_1px_0_rgba(255,255,255,0.10),0_18px_50px_rgba(0,0,0,0.35)] before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.13),transparent_32%),linear-gradient(120deg,transparent_0%,rgba(255,255,255,0.08)_18%,transparent_38%)] before:pointer-events-none";
+  "relative overflow-hidden rounded-3xl border border-white/10 bg-[linear-gradient(145deg,rgba(15,23,42,0.94),rgba(2,6,23,0.98)_48%,rgba(30,41,59,0.70))] shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_18px_50px_rgba(0,0,0,0.42)] before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.10),transparent_30%),linear-gradient(120deg,transparent_0%,rgba(255,255,255,0.055)_18%,transparent_38%)] before:pointer-events-none";
 
 const interventionQueue = [
   {
@@ -221,7 +221,7 @@ function ExecutiveOverview() {
             className={`${metalPanel} p-5`}
           >
             <div className="flex items-center justify-between">
-              <div className="rounded-2xl bg-slate-700 p-3">
+              <div className="rounded-2xl bg-white/10 p-3">
                 <item.icon size={22} />
               </div>
               <span className="rounded-full bg-emerald-500/20 px-3 py-1 text-xs font-semibold text-emerald-300">
@@ -267,15 +267,15 @@ function ExecutiveOverview() {
           </div>
 
           <div className="mt-10 grid gap-4 md:grid-cols-3">
-            <div className="rounded-2xl bg-slate-700/60 p-4">
+            <div className="rounded-2xl bg-black/20 p-4">
               <p className="text-xs text-slate-400">Expansion Pipeline</p>
               <p className="mt-2 text-2xl font-bold">$335K</p>
             </div>
-            <div className="rounded-2xl bg-slate-700/60 p-4">
+            <div className="rounded-2xl bg-black/20 p-4">
               <p className="text-xs text-slate-400">Validated Workflows</p>
               <p className="mt-2 text-2xl font-bold">42</p>
             </div>
-            <div className="rounded-2xl bg-slate-700/60 p-4">
+            <div className="rounded-2xl bg-black/20 p-4">
               <p className="text-xs text-slate-400">Production Systems</p>
               <p className="mt-2 text-2xl font-bold">18</p>
             </div>
@@ -294,11 +294,11 @@ function ExecutiveOverview() {
           </p>
 
           <div className="mt-8 space-y-4">
-            <div className="rounded-2xl bg-slate-700/60 p-4">✅ Executive sponsor aligned</div>
-            <div className="rounded-2xl bg-slate-700/60 p-4">✅ Champion network identified</div>
-            <div className="rounded-2xl bg-slate-700/60 p-4">✅ KPI baseline established</div>
+            <div className="rounded-2xl bg-black/20 p-4">✅ Executive sponsor aligned</div>
+            <div className="rounded-2xl bg-black/20 p-4">✅ Champion network identified</div>
+            <div className="rounded-2xl bg-black/20 p-4">✅ KPI baseline established</div>
             <div className="rounded-2xl bg-amber-500/10 p-4 text-amber-300">⚠ Security review pending</div>
-            <div className="rounded-2xl bg-slate-700/60 p-4">✅ Expansion use cases approved</div>
+            <div className="rounded-2xl bg-black/20 p-4">✅ Expansion use cases approved</div>
           </div>
         </div>
 
@@ -310,10 +310,10 @@ function ExecutiveOverview() {
         <div className={`${metalPanel} xl:col-span-7 p-7`}>
           <h2 className="text-2xl font-bold text-white">Executive AI Success Recommendations</h2>
           <div className="mt-6 space-y-4 text-sm">
-            <div className="rounded-2xl bg-slate-700/60 p-4">🚀 Expand Finance deployment into document workflows</div>
-            <div className="rounded-2xl bg-slate-700/60 p-4">⚠ Resolve legal security gating before production activation</div>
-            <div className="rounded-2xl bg-slate-700/60 p-4">📈 Scale Logistics assistant to support teams</div>
-            <div className="rounded-2xl bg-slate-700/60 p-4">🧠 Prompt optimization opportunity identified</div>
+            <div className="rounded-2xl bg-black/20 p-4">🚀 Expand Finance deployment into document workflows</div>
+            <div className="rounded-2xl bg-black/20 p-4">⚠ Resolve legal security gating before production activation</div>
+            <div className="rounded-2xl bg-black/20 p-4">📈 Scale Logistics assistant to support teams</div>
+            <div className="rounded-2xl bg-black/20 p-4">🧠 Prompt optimization opportunity identified</div>
           </div>
         </div>
 
