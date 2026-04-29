@@ -432,7 +432,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-100 text-slate-950 lg:flex">
+    <div className="min-h-screen bg-slate-950 text-white lg:flex">
       <Sidebar activePage={activePage} setActivePage={setActivePage} />
 
       <main className="flex-1 p-6 md:p-10">
