@@ -20,14 +20,14 @@ import {
   Workflow,
 } from "lucide-react";
 
-const executiveMetrics = [
+const executivePortfolioKPIs = [
   { title: "Portfolio Health", value: "86%", change: "+12%", icon: Gauge },
   { title: "Active AI Users", value: "12.4K", change: "+31%", icon: Users },
   { title: "Live AI Use Cases", value: "27", change: "+9", icon: Rocket },
   { title: "Efficiency Gain", value: "31%", change: "+18%", icon: TrendingUp },
 ];
 
-const adoption = [
+const adoptionVelocity = [
   { label: "Jan", value: 28 },
   { label: "Feb", value: 42 },
   { label: "Mar", value: 55 },
@@ -36,7 +36,7 @@ const adoption = [
   { label: "Jun", value: 84 },
 ];
 
-const customers = [
+const enterpriseAccounts = [
   {
     name: "Enterprise Logistics Co.",
     owner: "Customer Success",
@@ -79,14 +79,14 @@ const customers = [
   },
 ];
 
-const workflowPipeline = [
+const deploymentPrograms = [
   { name: "Support Ticket Triage", status: "Production", savings: "340 hrs/mo", roi: "High" },
   { name: "Knowledge Assistant", status: "Pilot", savings: "180 hrs/mo", roi: "Medium" },
   { name: "Document Review", status: "Security Review", savings: "420 hrs/mo", roi: "High" },
   { name: "Sales Call Summaries", status: "Production", savings: "210 hrs/mo", roi: "Medium" },
 ];
 
-const actionItems = [
+const interventionQueue = [
   {
     severity: "High",
     title: "Finance team adoption below threshold",
@@ -126,12 +126,12 @@ function Pill({ value }) {
 
 function Sidebar({ activePage, setActivePage }) {
   const links = [
-    { name: "Executive Overview", icon: LayoutDashboard },
-    { name: "Customer Health", icon: Building2 },
-    { name: "AI Performance", icon: Brain },
-    { name: "Workflow Pipeline", icon: Workflow },
-    { name: "Action Center", icon: Lightbulb },
-  ];
+    { name: "Portfolio Command", icon: LayoutDashboard },
+    { name: "Enterprise Accounts", icon: Building2 },
+    { name: "Deployment Intelligence", icon: Brain },
+    { name: "Automation Pipeline", icon: Workflow },
+    { name: "Intervention Queue", icon: ShieldCheck },
+];
 
   return (
     <aside className="hidden min-h-screen w-72 border-r border-slate-800 bg-slate-950 p-6 text-white lg:block">
@@ -140,8 +140,8 @@ function Sidebar({ activePage, setActivePage }) {
           <Brain size={26} />
         </div>
         <div>
-          <h1 className="text-xl font-bold">AI Command Center</h1>
-          <p className="text-sm text-slate-400">Enterprise AI Success</p>
+          <h1 className="text-xl font-bold">AI Success Command</h1>
+          <p className="text-sm text-slate-400">Enterprise Deployment Ops</p>
         </div>
       </div>
 
@@ -166,10 +166,10 @@ function Sidebar({ activePage, setActivePage }) {
       </nav>
 
       <div className="mt-10 rounded-2xl border border-slate-800 bg-slate-900 p-4">
-        <p className="text-xs font-semibold uppercase text-slate-400">Portfolio Demo</p>
+        <p className="text-xs font-semibold uppercase text-slate-400">Strategic Platform Build</p>
         <p className="mt-2 text-sm text-slate-300">
-          React + Tailwind + Vite + Vercel project demonstrating AI adoption strategy,
-          customer health analytics, and enterprise deployment readiness.
+              Enterprise customer success intelligence environment for monitoring deployment maturity,
+              account intervention signals, workflow scalability, and executive AI value realization.
         </p>
       </div>
     </aside>
@@ -211,7 +211,7 @@ function ExecutiveOverview() {
   return (
     <>
       <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-        {executiveMetrics.map((item) => (
+      {executivePortfolioKPIs.map((item) => (
           <MetricCard key={item.title} {...item} />
         ))}
       </div>
@@ -221,7 +221,7 @@ function ExecutiveOverview() {
           <h2 className="text-2xl font-bold">Adoption Velocity</h2>
           <p className="text-slate-600">Monthly AI platform adoption across enterprise teams.</p>
           <div className="mt-6 space-y-5">
-            {adoption.map((item) => (
+            {adoptionVelocity.map((item) => (
               <ProgressBar key={item.label} label={item.label} value={item.value} />
             ))}
           </div>
@@ -285,7 +285,7 @@ function CustomerHealth() {
           </tr>
         </thead>
         <tbody className="text-sm">
-          {customers.map((customer) => (
+          {enterpriseAccounts.map((customer) => (
             <tr key={customer.name} className="border-b last:border-0">
               <td className="py-4 font-semibold">{customer.name}</td>
               <td>{customer.owner}</td>
@@ -364,7 +364,7 @@ function WorkflowPipeline() {
       </p>
 
       <div className="mt-6 grid gap-4">
-        {workflowPipeline.map((workflow) => (
+        {deploymentPrograms.map((workflow) => (
           <div
             key={workflow.name}
             className="grid gap-4 rounded-xl border border-slate-200 p-5 md:grid-cols-4 md:items-center"
@@ -405,7 +405,7 @@ function ActionCenter() {
         </div>
 
         <div className="mt-5 space-y-4">
-          {actionItems.map((item) => (
+          {interventionQueue.map((item) => (
             <div key={item.title} className="rounded-xl border border-slate-200 bg-slate-50 p-4">
               <div className="mb-2">
                 <Pill value={item.severity} />
@@ -424,11 +424,11 @@ export default function App() {
   const [activePage, setActivePage] = useState("Executive Overview");
 
   const renderPage = () => {
-    if (activePage === "Customer Health") return <CustomerHealth />;
-    if (activePage === "AI Performance") return <AIPerformance />;
-    if (activePage === "Workflow Pipeline") return <WorkflowPipeline />;
-    if (activePage === "Action Center") return <ActionCenter />;
-    return <ExecutiveOverview />;
+    if (activePage === "Enterprise Accounts") return <CustomerHealth />;
+    if (activePage === "Deployment Intelligence") return <AIPerformance />;
+    if (activePage === "Automation Pipeline") return <WorkflowPipeline />;
+    if (activePage === "Intervention Queue") return <ActionCenter />;
+  return <ExecutiveOverview />;
   };
 
   return (
