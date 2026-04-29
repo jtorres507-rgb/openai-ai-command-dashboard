@@ -86,6 +86,9 @@ const deploymentPrograms = [
   { name: "Sales Call Summaries", status: "Production", savings: "210 hrs/mo", roi: "Medium" },
 ];
 
+const metalPanel =
+  "relative overflow-hidden rounded-3xl border border-white/10 bg-[linear-gradient(145deg,rgba(30,41,59,0.88),rgba(15,23,42,0.96)_45%,rgba(51,65,85,0.72))] shadow-[inset_0_1px_0_rgba(255,255,255,0.10),0_18px_50px_rgba(0,0,0,0.35)] before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.13),transparent_32%),linear-gradient(120deg,transparent_0%,rgba(255,255,255,0.08)_18%,transparent_38%)] before:pointer-events-none";
+
 const interventionQueue = [
   {
     severity: "High",
@@ -134,9 +137,9 @@ function Sidebar({ activePage, setActivePage }) {
 ];
 
   return (
-    <aside className="hidden min-h-screen w-72 border-r border-slate-700 bg-slate-800 p-6 text-white lg:block">
+    <aside className="hidden min-h-screen w-72 border-r border-slate-700 bg-slate-950 p-6 text-white lg:block">
       <div className="flex items-center gap-3">
-        <div className="rounded-2xl bg-slate-800 p-3 text-slate-950">
+        <div className="rounded-2xl bg-slate-950 p-3 text-slate-950">
           <Brain size={26} />
         </div>
         <div>
@@ -155,7 +158,7 @@ function Sidebar({ activePage, setActivePage }) {
               key={link.name}
               onClick={() => setActivePage(link.name)}
               className={`flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left text-sm font-semibold transition ${
-                active ? "bg-slate-800 text-slate-950" : "text-slate-300 hover:bg-slate-800"
+                active ? "bg-slate-950 text-slate-950" : "text-slate-300 hover:bg-slate-950"
               }`}
             >
               <Icon size={19} />
@@ -165,7 +168,7 @@ function Sidebar({ activePage, setActivePage }) {
         })}
       </nav>
 
-      <div className="mt-10 rounded-2xl border border-slate-700 bg-slate-800 p-4">
+      <div className="mt-10 rounded-2xl border border-slate-700 bg-slate-950 p-4">
         <p className="text-xs font-semibold uppercase text-slate-400">Strategic Platform Build</p>
         <p className="mt-2 text-sm text-slate-300">
               Enterprise customer success intelligence environment for monitoring deployment maturity,
@@ -201,7 +204,7 @@ function ProgressBar({ label, value }) {
         <span>{value}%</span>
       </div>
       <div className="h-4 rounded-full bg-slate-200">
-        <div className="h-4 rounded-full bg-slate-800" style={{ width: `${value}%` }} />
+        <div className="h-4 rounded-full bg-slate-950" style={{ width: `${value}%` }} />
       </div>
     </div>
   );
@@ -215,7 +218,7 @@ function ExecutiveOverview() {
         {executivePortfolioKPIs.map((item) => (
           <div
             key={item.title}
-            className="rounded-3xl border border-slate-700 bg-slate-800/90 p-5 shadow-lg shadow-black/20"
+            className={`${metalPanel} p-5`}
           >
             <div className="flex items-center justify-between">
               <div className="rounded-2xl bg-slate-700 p-3">
@@ -235,7 +238,7 @@ function ExecutiveOverview() {
       <div className="mt-8 grid gap-6 xl:grid-cols-12">
 
         {/* LEFT LARGE INTELLIGENCE PANEL */}
-        <div className="xl:col-span-7 rounded-3xl border border-slate-700 bg-slate-800/90 p-7 shadow-lg shadow-black/20">
+        <div className={`${metalPanel} xl:col-span-7 p-7`}>
           <div className="flex items-center justify-between">
             <div>
               <h2 className="text-2xl font-bold text-white">Enterprise Adoption Intelligence</h2>
@@ -280,7 +283,7 @@ function ExecutiveOverview() {
         </div>
 
         {/* RIGHT DEPLOYMENT PANEL */}
-        <div className="xl:col-span-5 rounded-3xl border border-slate-700 bg-slate-800/90 p-7 shadow-lg shadow-black/20">
+        <div className={`${metalPanel} xl:col-span-5 p-7`}>
           <div className="flex items-center gap-3">
             <Activity className="text-emerald-300" size={24} />
             <h2 className="text-2xl font-bold text-white">Deployment Readiness Matrix</h2>
@@ -304,7 +307,7 @@ function ExecutiveOverview() {
       {/* LOWER GRID */}
       <div className="mt-8 grid gap-6 xl:grid-cols-12">
 
-        <div className="xl:col-span-7 rounded-3xl border border-slate-700 bg-slate-800/90 p-7 shadow-lg shadow-black/20">
+        <div className={`${metalPanel} xl:col-span-7 p-7`}>
           <h2 className="text-2xl font-bold text-white">Executive AI Success Recommendations</h2>
           <div className="mt-6 space-y-4 text-sm">
             <div className="rounded-2xl bg-slate-700/60 p-4">🚀 Expand Finance deployment into document workflows</div>
@@ -314,7 +317,7 @@ function ExecutiveOverview() {
           </div>
         </div>
 
-        <div className="xl:col-span-5 rounded-3xl border border-slate-700 bg-slate-800/90 p-7 shadow-lg shadow-black/20">
+        <div className={`${metalPanel} xl:col-span-7 p-7`}>
           <h2 className="text-2xl font-bold text-white">AI Success Assistant</h2>
           <div className="mt-6 rounded-3xl bg-slate-700/50 p-5 text-sm text-slate-300 leading-7">
             <p>• 3 enterprise accounts are expansion-ready this quarter</p>
@@ -331,7 +334,7 @@ function ExecutiveOverview() {
 
 function CustomerHealth() {
   return (
-    <div className="rounded-2xl border border-slate-700 bg-slate-800 p-6 shadow-sm overflow-x-auto">
+    <div className="rounded-2xl border border-slate-700 bg-slate-950 p-6 shadow-sm overflow-x-auto">
       <h2 className="text-2xl font-bold">Customer Health Intelligence</h2>
       <p className="mt-2 text-slate-300">
         Portfolio-level account intelligence for adoption, retention risk, expansion, and technical success ownership.
@@ -386,7 +389,7 @@ function AIPerformance() {
       </div>
 
       <div className="mt-8 grid gap-6 xl:grid-cols-2">
-        <div className="rounded-2xl border border-slate-700 bg-slate-800 p-6 shadow-sm">
+        <div className="rounded-2xl border border-slate-700 bg-slate-950 p-6 shadow-sm">
           <h2 className="text-2xl font-bold">AI System Observability</h2>
           <p className="mt-2 text-slate-300">
             Operational signals for enterprise AI deployment monitoring.
@@ -407,7 +410,7 @@ function AIPerformance() {
           </div>
         </div>
 
-        <div className="rounded-2xl border border-slate-700 bg-slate-800 p-6 text-white shadow-sm">
+        <div className="rounded-2xl border border-slate-700 bg-slate-950 p-6 text-white shadow-sm">
           <h2 className="text-2xl font-bold">Model Improvement Notes</h2>
           <div className="mt-5 space-y-4 text-sm text-slate-300">
             <p>✅ Prompt templates improved response consistency across support workflows.</p>
@@ -423,7 +426,7 @@ function AIPerformance() {
 
 function WorkflowPipeline() {
   return (
-    <div className="rounded-2xl border border-slate-700 bg-slate-800 p-6 shadow-sm">
+    <div className="rounded-2xl border border-slate-700 bg-slate-950 p-6 shadow-sm">
       <h2 className="text-2xl font-bold">Workflow Automation Pipeline</h2>
       <p className="mt-2 text-slate-300">
         Tracks AI workflow candidates from discovery through production deployment.
@@ -449,7 +452,7 @@ function WorkflowPipeline() {
 function ActionCenter() {
   return (
     <div className="grid gap-6 xl:grid-cols-2">
-      <div className="rounded-2xl border border-slate-700 bg-slate-800 p-6 shadow-sm">
+      <div className="rounded-2xl border border-slate-700 bg-slate-950 p-6 shadow-sm">
         <div className="flex items-center gap-3">
           <Lightbulb />
           <h2 className="text-2xl font-bold">AI Success Recommendations</h2>
@@ -464,7 +467,7 @@ function ActionCenter() {
         </ul>
       </div>
 
-      <div className="rounded-2xl border border-slate-700 bg-slate-800 p-6 shadow-sm">
+      <div className="rounded-2xl border border-slate-700 bg-slate-950 p-6 shadow-sm">
         <div className="flex items-center gap-3">
           <ShieldCheck />
           <h2 className="text-2xl font-bold">Intervention Queue</h2>
@@ -498,10 +501,10 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-800 text-white lg:flex">
+    <div className="min-h-screen bg-slate-950 text-white lg:flex">
       <Sidebar activePage={activePage} setActivePage={setActivePage} />
 
-      <main className="flex-1 p-6 md:p-10 bg-slate-800">
+      <main className="flex-1 p-6 md:p-10 bg-slate-950">
         <div className="mb-8">
           <p className="text-sm font-bold uppercase tracking-[0.2em] text-emerald-400">
                 ENTERPRISE AI SUCCESS COMMAND PLATFORM
