@@ -333,41 +333,172 @@ function ExecutiveOverview() {
 }
 
 function CustomerHealth() {
-  return (
-    <div className="rounded-2xl border border-slate-700 bg-slate-950 p-6 shadow-sm overflow-x-auto">
-      <h2 className="text-2xl font-bold">Customer Health Intelligence</h2>
-      <p className="mt-2 text-slate-300">
-        Portfolio-level account intelligence for adoption, retention risk, expansion, and technical success ownership.
-      </p>
+  const accountInsights = [
+    {
+      name: "Enterprise Logistics Co.",
+      segment: "Strategic Enterprise",
+      owner: "Customer Success",
+      health: "Strong",
+      adoption: 84,
+      stage: "Expansion Ready",
+      blocker: "None",
+      arr: "$420K",
+      nextAction: "Scale logistics automation playbook",
+    },
+    {
+      name: "Regional Finance Group",
+      segment: "Financial Services",
+      owner: "Solutions",
+      health: "Moderate",
+      adoption: 61,
+      stage: "Security Review",
+      blocker: "Policy approval",
+      arr: "$310K",
+      nextAction: "Run finance enablement sprint",
+    },
+    {
+      name: "Healthcare Ops Team",
+      segment: "Regulated Enterprise",
+      owner: "Technical Success",
+      health: "Strong",
+      adoption: 79,
+      stage: "Pilot Expansion",
+      blocker: "Workflow validation",
+      arr: "$380K",
+      nextAction: "Validate clinical support workflows",
+    },
+    {
+      name: "National Legal Services",
+      segment: "Legal Operations",
+      owner: "Deployment",
+      health: "At Risk",
+      adoption: 43,
+      stage: "Blocked",
+      blocker: "Compliance review",
+      arr: "$250K",
+      nextAction: "Escalate security/compliance alignment",
+    },
+  ];
 
-      <table className="mt-6 w-full min-w-[900px] text-left">
-        <thead>
-          <tr className="border-b text-sm text-slate-500">
-            <th className="py-3">Customer</th>
-            <th>Owner</th>
-            <th>Health</th>
-            <th>Adoption</th>
-            <th>Risk</th>
-            <th>ARR</th>
-            <th>Opportunity</th>
-            <th>Last Touch</th>
-          </tr>
-        </thead>
-        <tbody className="text-sm">
-          {enterpriseAccounts.map((customer) => (
-            <tr key={customer.name} className="border-b last:border-0">
-              <td className="py-4 font-semibold">{customer.name}</td>
-              <td>{customer.owner}</td>
-              <td><Pill value={customer.health} /></td>
-              <td>{customer.adoption}%</td>
-              <td><Pill value={customer.risk} /></td>
-              <td className="font-semibold">{customer.arr}</td>
-              <td>{customer.opportunity}</td>
-              <td>{customer.lastTouch}</td>
-            </tr>
+  return (
+    <div className="grid gap-6 xl:grid-cols-12">
+      <div className={`${metalPanel} xl:col-span-8 p-7`}>
+        <div className="flex flex-wrap items-start justify-between gap-4">
+          <div>
+            <h2 className="text-2xl font-bold text-white">
+              Strategic Account Health Intelligence
+            </h2>
+            <p className="mt-2 text-sm text-slate-400">
+              Portfolio-level visibility into adoption, deployment stage, ARR exposure,
+              blockers, and next executive actions.
+            </p>
+          </div>
+
+          <span className="rounded-full bg-cyan-500/10 px-4 py-2 text-xs font-bold text-cyan-300">
+            LIVE PORTFOLIO SIGNALS
+          </span>
+        </div>
+
+        <div className="mt-7 space-y-4">
+          {accountInsights.map((account) => (
+            <div
+              key={account.name}
+              className="rounded-3xl border border-white/10 bg-black/20 p-5 shadow-inner"
+            >
+              <div className="grid gap-5 lg:grid-cols-12 lg:items-center">
+                <div className="lg:col-span-4">
+                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-slate-500">
+                    {account.segment}
+                  </p>
+                  <h3 className="mt-2 text-xl font-bold text-white">{account.name}</h3>
+                  <p className="mt-1 text-sm text-slate-400">Owner: {account.owner}</p>
+                </div>
+
+                <div className="lg:col-span-2">
+                  <p className="text-xs text-slate-500">Health</p>
+                  <div className="mt-2">
+                    <Pill value={account.health} />
+                  </div>
+                </div>
+
+                <div className="lg:col-span-2">
+                  <p className="text-xs text-slate-500">Adoption</p>
+                  <p className="mt-1 text-2xl font-bold text-cyan-300">
+                    {account.adoption}%
+                  </p>
+                </div>
+
+                <div className="lg:col-span-2">
+                  <p className="text-xs text-slate-500">ARR Exposure</p>
+                  <p className="mt-1 text-2xl font-bold text-white">{account.arr}</p>
+                </div>
+
+                <div className="lg:col-span-2">
+                  <p className="text-xs text-slate-500">Stage</p>
+                  <p className="mt-1 text-sm font-semibold text-emerald-300">
+                    {account.stage}
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-5 grid gap-4 lg:grid-cols-2">
+                <div className="rounded-2xl bg-black/20 p-4">
+                  <p className="text-xs text-slate-500">Primary Blocker</p>
+                  <p className="mt-1 text-sm font-semibold text-slate-200">
+                    {account.blocker}
+                  </p>
+                </div>
+
+                <div className="rounded-2xl bg-black/20 p-4">
+                  <p className="text-xs text-slate-500">Next Executive Action</p>
+                  <p className="mt-1 text-sm font-semibold text-slate-200">
+                    {account.nextAction}
+                  </p>
+                </div>
+              </div>
+            </div>
           ))}
-        </tbody>
-      </table>
+        </div>
+      </div>
+
+      <div className={`${metalPanel} xl:col-span-4 p-7`}>
+        <h2 className="text-2xl font-bold text-white">Account Command Signals</h2>
+        <p className="mt-2 text-sm text-slate-400">
+          AI-generated portfolio recommendations for customer success leadership.
+        </p>
+
+        <div className="mt-7 space-y-4">
+          <div className="rounded-3xl border border-emerald-400/20 bg-emerald-500/10 p-5">
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-emerald-300">
+              Expansion Opportunity
+            </p>
+            <p className="mt-2 text-2xl font-bold text-white">$800K+</p>
+            <p className="mt-2 text-sm text-slate-300">
+              Three accounts show strong adoption velocity and low blocker exposure.
+            </p>
+          </div>
+
+          <div className="rounded-3xl border border-amber-400/20 bg-amber-500/10 p-5">
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-amber-300">
+              Executive Attention
+            </p>
+            <p className="mt-2 text-2xl font-bold text-white">1 Account</p>
+            <p className="mt-2 text-sm text-slate-300">
+              National Legal Services requires compliance alignment before production rollout.
+            </p>
+          </div>
+
+          <div className="rounded-3xl border border-cyan-400/20 bg-cyan-500/10 p-5">
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-cyan-300">
+              Recommended Motion
+            </p>
+            <p className="mt-2 text-sm leading-7 text-slate-300">
+              Prioritize finance security review, then move logistics and healthcare accounts
+              into expansion sequencing.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
