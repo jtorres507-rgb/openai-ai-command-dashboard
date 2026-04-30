@@ -308,7 +308,7 @@ function ExecutiveOverview() {
       <div className="mt-8 grid gap-6 xl:grid-cols-12">
 
         <div className={`${metalPanel} xl:col-span-7 p-7`}>
-          <h2 className="text-2xl font-bold text-white">Executive AI Success Recommendations</h2>
+          <h2 className="text-2xl font-bold text-white">Executive AI Success Recommendation</h2>
           <div className="mt-6 space-y-4 text-sm">
             <div className="rounded-2xl bg-black/20 p-4">🚀 Expand Finance deployment into document workflows</div>
             <div className="rounded-2xl bg-black/20 p-4">⚠ Resolve legal security gating before production activation</div>
