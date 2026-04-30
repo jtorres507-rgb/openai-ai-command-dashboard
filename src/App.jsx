@@ -319,7 +319,7 @@ function ExecutiveOverview() {
 
         <div className={`${metalPanel} p-7`}>
           <h2 className="text-2xl font-bold text-white">AI Success Assistant</h2>
-          <div className="mt-6 rounded-3xl bg-slate-700/50 p-5 text-sm text-slate-300 leading-7">
+          <div className="mt-6 rounded-3xl bg-slate-700/50 p-6 text-base font-medium text-slate-200 leading-8">
             <p>• 3 enterprise accounts are expansion-ready this quarter</p>
             <p>• 1 deployment requires security intervention</p>
             <p>• projected retained ARR confidence: high</p>
