@@ -842,39 +842,170 @@ function WorkflowPipeline() {
 }
 
 function ActionCenter() {
+  const executiveInterventions = [
+    {
+      priority: "P0",
+      title: "Legal pilot blocked by compliance interpretation",
+      account: "National Legal Services",
+      owner: "Deployment Lead",
+      urgency: "High",
+      businessRisk: "$250K ARR at risk",
+      recommendation:
+        "Escalate compliance alignment with executive sponsor and produce deployment decision memo within 48 hours.",
+    },
+    {
+      priority: "P1",
+      title: "Finance workflow adoption below threshold",
+      account: "Regional Finance Group",
+      owner: "Solutions",
+      urgency: "Medium",
+      businessRisk: "$80K upsell delayed",
+      recommendation:
+        "Run a 14-day enablement sprint focused on document workflows, prompt training, and champion activation.",
+    },
+    {
+      priority: "P1",
+      title: "Retrieval latency elevated during peak support windows",
+      account: "Enterprise Logistics Co.",
+      owner: "AI Platform",
+      urgency: "Medium",
+      businessRisk: "Expansion confidence reduced",
+      recommendation:
+        "Tune retrieval timeout thresholds, cache high-priority intents, and monitor latency for 72 hours.",
+    },
+    {
+      priority: "P2",
+      title: "Healthcare pilot requires workflow validation evidence",
+      account: "Healthcare Ops Team",
+      owner: "Technical Success",
+      urgency: "Low",
+      businessRisk: "$95K expansion pending",
+      recommendation:
+        "Validate top clinical support workflows and convert pilot results into executive value summary.",
+    },
+  ];
+
+  const urgencyStyle = {
+    High: "border-red-400/20 bg-red-500/10 text-red-300",
+    Medium: "border-amber-400/20 bg-amber-500/10 text-amber-300",
+    Low: "border-emerald-400/20 bg-emerald-500/10 text-emerald-300",
+  };
+
   return (
-    <div className="grid gap-6 xl:grid-cols-2">
-      <div className="rounded-2xl border border-slate-700 bg-slate-950 p-6 shadow-sm">
-        <div className="flex items-center gap-3">
-          <Lightbulb />
-          <h2 className="text-2xl font-bold">AI Success Recommendations</h2>
+    <div className="grid gap-6 xl:grid-cols-12">
+      <div className={`${metalPanel} xl:col-span-8 p-7`}>
+        <div className="flex flex-wrap items-start justify-between gap-4">
+          <div>
+            <h2 className="text-2xl font-bold text-white">
+              Executive Intervention Queue
+            </h2>
+            <p className="mt-2 text-sm text-slate-400">
+              Prioritized customer success actions generated from deployment health,
+              technical blockers, account risk, and expansion opportunity signals.
+            </p>
+          </div>
+
+          <span className="rounded-full bg-red-500/10 px-4 py-2 text-xs font-bold text-red-300">
+            1 HIGH PRIORITY
+          </span>
         </div>
 
-        <ul className="mt-5 space-y-3 text-slate-700">
-          <li>🚀 Expand AI deployment to Finance workflows with high ROI potential.</li>
-          <li>⚠️ Address adoption gaps in Regional Finance Group.</li>
-          <li>📈 Scale successful Logistics automation playbook.</li>
-          <li>🧠 Optimize prompts to reduce hallucination rate further.</li>
-          <li>🔐 Complete security review for enterprise rollout.</li>
-        </ul>
-      </div>
+        <div className="mt-7 space-y-4">
+          {executiveInterventions.map((item) => (
+            <div
+              key={item.title}
+              className="rounded-3xl border border-white/10 bg-black/20 p-5 shadow-inner"
+            >
+              <div className="grid gap-5 lg:grid-cols-12 lg:items-start">
+                <div className="lg:col-span-1">
+                  <span className="rounded-2xl border border-cyan-400/20 bg-cyan-500/10 px-3 py-2 text-xs font-bold text-cyan-300">
+                    {item.priority}
+                  </span>
+                </div>
 
-      <div className="rounded-2xl border border-slate-700 bg-slate-950 p-6 shadow-sm">
-        <div className="flex items-center gap-3">
-          <ShieldCheck />
-          <h2 className="text-2xl font-bold">Intervention Queue</h2>
-        </div>
+                <div className="lg:col-span-5">
+                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-slate-500">
+                    Intervention
+                  </p>
+                  <h3 className="mt-2 text-lg font-bold text-white">{item.title}</h3>
+                  <p className="mt-1 text-sm text-slate-400">{item.account}</p>
+                </div>
 
-        <div className="mt-5 space-y-4">
-          {interventionQueue.map((item) => (
-            <div key={item.title} className="rounded-xl border border-slate-700 bg-slate-50 p-4">
-              <div className="mb-2">
-                <Pill value={item.severity} />
+                <div className="lg:col-span-2">
+                  <p className="text-xs text-slate-500">Owner</p>
+                  <p className="mt-1 text-sm font-semibold text-slate-200">
+                    {item.owner}
+                  </p>
+                </div>
+
+                <div className="lg:col-span-2">
+                  <p className="text-xs text-slate-500">Urgency</p>
+                  <span
+                    className={`mt-2 inline-flex rounded-full border px-3 py-1 text-xs font-bold ${
+                      urgencyStyle[item.urgency]
+                    }`}
+                  >
+                    {item.urgency}
+                  </span>
+                </div>
+
+                <div className="lg:col-span-2">
+                  <p className="text-xs text-slate-500">Business Risk</p>
+                  <p className="mt-1 text-sm font-semibold text-slate-200">
+                    {item.businessRisk}
+                  </p>
+                </div>
               </div>
-              <h3 className="font-bold">{item.title}</h3>
-              <p className="mt-1 text-sm text-slate-300">{item.detail}</p>
+
+              <div className="mt-5 rounded-2xl border border-white/10 bg-black/20 p-4">
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-slate-500">
+                  Recommended Action
+                </p>
+                <p className="mt-2 text-sm font-semibold leading-7 text-slate-200">
+                  {item.recommendation}
+                </p>
+              </div>
             </div>
           ))}
+        </div>
+      </div>
+
+      <div className={`${metalPanel} xl:col-span-4 p-7`}>
+        <h2 className="text-2xl font-bold text-white">AI Action Summary</h2>
+        <p className="mt-2 text-sm text-slate-400">
+          Portfolio-level intervention posture for customer leadership.
+        </p>
+
+        <div className="mt-7 space-y-4">
+          <div className="rounded-3xl border border-red-400/20 bg-red-500/10 p-5">
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-red-300">
+              Immediate Escalation
+            </p>
+            <p className="mt-2 text-3xl font-bold text-white">1</p>
+            <p className="mt-2 text-sm text-slate-300">
+              Legal compliance blocker requires executive alignment within 48 hours.
+            </p>
+          </div>
+
+          <div className="rounded-3xl border border-amber-400/20 bg-amber-500/10 p-5">
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-amber-300">
+              Enablement Motion
+            </p>
+            <p className="mt-2 text-3xl font-bold text-white">2</p>
+            <p className="mt-2 text-sm text-slate-300">
+              Finance and logistics accounts require targeted adoption and technical optimization.
+            </p>
+          </div>
+
+          <div className="rounded-3xl border border-emerald-400/20 bg-emerald-500/10 p-5">
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-emerald-300">
+              Expansion Protected
+            </p>
+            <p className="mt-2 text-3xl font-bold text-white">$515K</p>
+            <p className="mt-2 text-sm text-slate-300">
+              Estimated opportunity protected through prioritized intervention execution.
+            </p>
+          </div>
         </div>
       </div>
     </div>
