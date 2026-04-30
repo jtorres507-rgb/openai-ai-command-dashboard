@@ -664,25 +664,178 @@ function AIPerformance() {
 }
 
 function WorkflowPipeline() {
-  return (
-    <div className="rounded-2xl border border-slate-700 bg-slate-950 p-6 shadow-sm">
-      <h2 className="text-2xl font-bold">Workflow Automation Pipeline</h2>
-      <p className="mt-2 text-slate-300">
-        Tracks AI workflow candidates from discovery through production deployment.
-      </p>
+  const automationPrograms = [
+    {
+      workflow: "Support Ticket Triage",
+      stage: "Production",
+      owner: "Customer Success",
+      value: "340 hrs/mo",
+      roi: "High",
+      blocker: "None",
+      nextMilestone: "Scale to Tier-2 support queues",
+      confidence: 91,
+    },
+    {
+      workflow: "Knowledge Assistant",
+      stage: "Pilot",
+      owner: "Solutions",
+      value: "180 hrs/mo",
+      roi: "Medium",
+      blocker: "Champion enablement",
+      nextMilestone: "Train department champions",
+      confidence: 78,
+    },
+    {
+      workflow: "Document Review",
+      stage: "Security Review",
+      owner: "AI Platform",
+      value: "420 hrs/mo",
+      roi: "High",
+      blocker: "Data handling review",
+      nextMilestone: "Complete security approval",
+      confidence: 72,
+    },
+    {
+      workflow: "Sales Call Summaries",
+      stage: "Production",
+      owner: "Revenue Ops",
+      value: "210 hrs/mo",
+      roi: "Medium",
+      blocker: "None",
+      nextMilestone: "Expand to enterprise account teams",
+      confidence: 86,
+    },
+  ];
 
-      <div className="mt-6 grid gap-4">
-        {deploymentPrograms.map((workflow) => (
-          <div
-            key={workflow.name}
-            className="grid gap-4 rounded-xl border border-slate-700 p-5 md:grid-cols-4 md:items-center"
-          >
-            <div className="font-semibold">{workflow.name}</div>
-            <div><Pill value={workflow.status} /></div>
-            <div className="text-sm text-slate-300">Savings: <strong>{workflow.savings}</strong></div>
-            <div className="text-sm text-slate-300">ROI: <strong>{workflow.roi}</strong></div>
+  return (
+    <div className="grid gap-6 xl:grid-cols-12">
+      <div className={`${metalPanel} xl:col-span-8 p-7`}>
+        <div className="flex flex-wrap items-start justify-between gap-4">
+          <div>
+            <h2 className="text-2xl font-bold text-white">
+              AI Workflow Automation Pipeline
+            </h2>
+            <p className="mt-2 text-sm text-slate-400">
+              Tracks enterprise AI use cases from discovery through pilot, security review,
+              production deployment, and scaled customer adoption.
+            </p>
           </div>
-        ))}
+
+          <span className="rounded-full bg-cyan-500/10 px-4 py-2 text-xs font-bold text-cyan-300">
+            42 VALIDATED WORKFLOWS
+          </span>
+        </div>
+
+        <div className="mt-7 space-y-4">
+          {automationPrograms.map((program) => (
+            <div
+              key={program.workflow}
+              className="rounded-3xl border border-white/10 bg-black/20 p-5 shadow-inner"
+            >
+              <div className="grid gap-5 lg:grid-cols-12 lg:items-center">
+                <div className="lg:col-span-4">
+                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-slate-500">
+                    Workflow
+                  </p>
+                  <h3 className="mt-2 text-lg font-bold text-white">
+                    {program.workflow}
+                  </h3>
+                  <p className="mt-1 text-sm text-slate-400">Owner: {program.owner}</p>
+                </div>
+
+                <div className="lg:col-span-2">
+                  <p className="text-xs text-slate-500">Stage</p>
+                  <div className="mt-2">
+                    <Pill value={program.stage} />
+                  </div>
+                </div>
+
+                <div className="lg:col-span-2">
+                  <p className="text-xs text-slate-500">Value</p>
+                  <p className="mt-1 text-xl font-bold text-cyan-300">
+                    {program.value}
+                  </p>
+                </div>
+
+                <div className="lg:col-span-2">
+                  <p className="text-xs text-slate-500">ROI</p>
+                  <p className="mt-1 text-sm font-bold text-emerald-300">
+                    {program.roi}
+                  </p>
+                </div>
+
+                <div className="lg:col-span-2">
+                  <p className="text-xs text-slate-500">Confidence</p>
+                  <p className="mt-1 text-xl font-bold text-white">
+                    {program.confidence}%
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-5 grid gap-4 lg:grid-cols-2">
+                <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
+                  <p className="text-xs text-slate-500">Primary Blocker</p>
+                  <p className="mt-1 text-sm font-semibold text-slate-200">
+                    {program.blocker}
+                  </p>
+                </div>
+
+                <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
+                  <p className="text-xs text-slate-500">Next Milestone</p>
+                  <p className="mt-1 text-sm font-semibold text-slate-200">
+                    {program.nextMilestone}
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-5 h-3 rounded-full bg-slate-700/70">
+                <div
+                  className="h-3 rounded-full bg-[linear-gradient(90deg,#22d3ee,#a3e635,#22d3ee)] shadow-[0_0_18px_rgba(34,211,238,0.45)]"
+                  style={{ width: `${program.confidence}%` }}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className={`${metalPanel} xl:col-span-4 p-7`}>
+        <h2 className="text-2xl font-bold text-white">Automation Value Summary</h2>
+        <p className="mt-2 text-sm text-slate-400">
+          Estimated operational leverage from validated AI workflow deployment.
+        </p>
+
+        <div className="mt-7 space-y-4">
+          <div className="rounded-3xl border border-emerald-400/20 bg-emerald-500/10 p-5">
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-emerald-300">
+              Monthly Capacity Returned
+            </p>
+            <p className="mt-2 text-3xl font-bold text-white">1,150 hrs</p>
+            <p className="mt-2 text-sm text-slate-300">
+              Estimated aggregate time savings from production and near-production workflows.
+            </p>
+          </div>
+
+          <div className="rounded-3xl border border-cyan-400/20 bg-cyan-500/10 p-5">
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-cyan-300">
+              Production-Ready Workflows
+            </p>
+            <p className="mt-2 text-3xl font-bold text-white">18</p>
+            <p className="mt-2 text-sm text-slate-300">
+              Validated workflows with adoption support and measurable KPI baselines.
+            </p>
+          </div>
+
+          <div className="rounded-3xl border border-amber-400/20 bg-amber-500/10 p-5">
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-amber-300">
+              Current Deployment Constraint
+            </p>
+            <p className="mt-2 text-sm leading-7 text-slate-300">
+              Security review remains the primary blocker for document-heavy automation
+              expansion across regulated teams.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
