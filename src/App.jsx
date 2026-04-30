@@ -305,19 +305,19 @@ function ExecutiveOverview() {
       </div>
 
       {/* LOWER GRID */}
-      <div className="mt-8 grid gap-6 xl:grid-cols-12">
+      <div className="mt-8 grid gap-6 xl:grid-cols-2">
 
-        <div className={`${metalPanel} xl:col-span-7 p-7`}>
-          <h2 className="text-2xl font-bold text-white">Executive AI Success Recommendation</h2>
-          <div className="mt-6 space-y-4 text-sm">
-            <div className="rounded-2xl bg-black/20 p-4">🚀 Expand Finance deployment into document workflows</div>
-            <div className="rounded-2xl bg-black/20 p-4">⚠ Resolve legal security gating before production activation</div>
-            <div className="rounded-2xl bg-black/20 p-4">📈 Scale Logistics assistant to support teams</div>
-            <div className="rounded-2xl bg-black/20 p-4">🧠 Prompt optimization opportunity identified</div>
+        <div className={`${metalPanel} p-7`}>
+          <h2 className="text-2xl font-bold text-white">Executive AI Success Recommendations</h2>
+          <div className="mt-6 space-y-4 text-lg font-semibold text-slate-100">
+            <div className="rounded-2xl bg-black/20 p-5">🚀 Expand Finance deployment into document workflows</div>
+            <div className="rounded-2xl bg-black/20 p-5">⚠ Resolve legal security gating before production activation</div>
+            <div className="rounded-2xl bg-black/20 p-5">📈 Scale Logistics assistant to support teams</div>
+            <div className="rounded-2xl bg-black/20 p-5">🧠 Prompt optimization opportunity identified</div>
           </div>
         </div>
 
-        <div className={`${metalPanel} xl:col-span-7 p-7`}>
+        <div className={`${metalPanel} p-7`}>
           <h2 className="text-2xl font-bold text-white">AI Success Assistant</h2>
           <div className="mt-6 rounded-3xl bg-slate-700/50 p-5 text-sm text-slate-300 leading-7">
             <p>• 3 enterprise accounts are expansion-ready this quarter</p>
