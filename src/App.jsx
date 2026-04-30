@@ -504,54 +504,162 @@ function CustomerHealth() {
 }
 
 function AIPerformance() {
-  const modelMetrics = [
-    { title: "LLM Accuracy", value: "92%", change: "+7%", icon: CheckCircle },
-    { title: "Hallucination Rate", value: "4%", change: "-3%", icon: AlertTriangle },
-    { title: "Response Time", value: "1.2s", change: "-0.4s", icon: Clock },
-    { title: "Prompt Gain", value: "+18%", change: "Optimized", icon: Zap },
+  const readinessSignals = [
+    { label: "Model Response Stability", value: 92, risk: "Low" },
+    { label: "Retrieval Accuracy", value: 84, risk: "Medium" },
+    { label: "Prompt Reliability", value: 88, risk: "Low" },
+    { label: "Security Review Completion", value: 73, risk: "Medium" },
+    { label: "Workflow Validation", value: 79, risk: "Medium" },
+  ];
+
+  const productionBlockers = [
+    {
+      blocker: "Finance document workflow awaiting security approval",
+      severity: "Medium",
+      owner: "Solutions + Security",
+      action: "Complete policy review before production expansion",
+    },
+    {
+      blocker: "Legal services pilot blocked by compliance interpretation",
+      severity: "High",
+      owner: "Deployment Lead",
+      action: "Escalate executive sponsor alignment",
+    },
+    {
+      blocker: "Retrieval latency elevated during high-volume support windows",
+      severity: "Medium",
+      owner: "AI Platform",
+      action: "Tune retrieval timeout and cache priority intents",
+    },
   ];
 
   return (
-    <>
-      <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-        {modelMetrics.map((item) => (
-          <MetricCard key={item.title} {...item} />
-        ))}
-      </div>
-
-      <div className="mt-8 grid gap-6 xl:grid-cols-2">
-        <div className="rounded-2xl border border-slate-700 bg-slate-950 p-6 shadow-sm">
-          <h2 className="text-2xl font-bold">AI System Observability</h2>
-          <p className="mt-2 text-slate-300">
-            Operational signals for enterprise AI deployment monitoring.
-          </p>
-          <div className="mt-6 grid gap-5 md:grid-cols-3">
-            <div className="rounded-xl bg-slate-100 p-5">
-              <p className="text-sm text-slate-500">Token Usage</p>
-              <p className="text-3xl font-bold">1.8M</p>
-            </div>
-            <div className="rounded-xl bg-slate-100 p-5">
-              <p className="text-sm text-slate-500">Escalations Avoided</p>
-              <p className="text-3xl font-bold">312</p>
-            </div>
-            <div className="rounded-xl bg-slate-100 p-5">
-              <p className="text-sm text-slate-500">Hours Saved</p>
-              <p className="text-3xl font-bold">740</p>
-            </div>
+    <div className="grid gap-6 xl:grid-cols-12">
+      <div className={`${metalPanel} xl:col-span-8 p-7`}>
+        <div className="flex flex-wrap items-start justify-between gap-4">
+          <div>
+            <h2 className="text-2xl font-bold text-white">
+              AI Production Readiness Intelligence
+            </h2>
+            <p className="mt-2 text-sm text-slate-400">
+              Technical signals used to evaluate deployment stability, model behavior,
+              workflow readiness, and customer-facing production confidence.
+            </p>
           </div>
+
+          <span className="rounded-full bg-emerald-500/10 px-4 py-2 text-xs font-bold text-emerald-300">
+            87% DEPLOYMENT CONFIDENCE
+          </span>
         </div>
 
-        <div className="rounded-2xl border border-slate-700 bg-slate-950 p-6 text-white shadow-sm">
-          <h2 className="text-2xl font-bold">Model Improvement Notes</h2>
-          <div className="mt-5 space-y-4 text-sm text-slate-300">
-            <p>✅ Prompt templates improved response consistency across support workflows.</p>
-            <p>✅ Retrieval quality improved after narrowing knowledge-base scope.</p>
-            <p>⚠️ Finance workflows require compliance review before broad rollout.</p>
-            <p>📈 Reduced manual escalation load by routing repetitive questions to AI assistant.</p>
+        <div className="mt-8 space-y-6">
+          {readinessSignals.map((signal) => (
+            <div key={signal.label}>
+              <div className="mb-2 flex items-center justify-between">
+                <div>
+                  <p className="font-semibold text-white">{signal.label}</p>
+                  <p className="text-xs text-slate-500">Risk posture: {signal.risk}</p>
+                </div>
+                <p className="text-lg font-bold text-cyan-300">{signal.value}%</p>
+              </div>
+
+              <div className="h-3 rounded-full bg-slate-700/70">
+                <div
+                  className="h-3 rounded-full bg-[linear-gradient(90deg,#22d3ee,#a3e635,#22d3ee)] shadow-[0_0_18px_rgba(34,211,238,0.45)]"
+                  style={{ width: `${signal.value}%` }}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className={`${metalPanel} xl:col-span-4 p-7`}>
+        <h2 className="text-2xl font-bold text-white">Technical Risk Summary</h2>
+        <p className="mt-2 text-sm text-slate-400">
+          Current readiness posture across active customer deployments.
+        </p>
+
+        <div className="mt-7 space-y-4">
+          <div className="rounded-3xl border border-emerald-400/20 bg-emerald-500/10 p-5">
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-emerald-300">
+              Stable Signals
+            </p>
+            <p className="mt-2 text-3xl font-bold text-white">3</p>
+            <p className="mt-2 text-sm text-slate-300">
+              Model stability, prompt reliability, and baseline response quality are within target.
+            </p>
+          </div>
+
+          <div className="rounded-3xl border border-amber-400/20 bg-amber-500/10 p-5">
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-amber-300">
+              Watch Areas
+            </p>
+            <p className="mt-2 text-3xl font-bold text-white">2</p>
+            <p className="mt-2 text-sm text-slate-300">
+              Retrieval performance and security review completion require active monitoring.
+            </p>
+          </div>
+
+          <div className="rounded-3xl border border-cyan-400/20 bg-cyan-500/10 p-5">
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-cyan-300">
+              Recommended Next Step
+            </p>
+            <p className="mt-2 text-sm leading-7 text-slate-300">
+              Prioritize retrieval tuning before expanding into document-heavy customer workflows.
+            </p>
           </div>
         </div>
       </div>
-    </>
+
+      <div className={`${metalPanel} xl:col-span-12 p-7`}>
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <h2 className="text-2xl font-bold text-white">Production Blocker Matrix</h2>
+            <p className="mt-2 text-sm text-slate-400">
+              Active deployment constraints requiring technical, security, or executive intervention.
+            </p>
+          </div>
+
+          <span className="rounded-full bg-cyan-500/10 px-4 py-2 text-xs font-bold text-cyan-300">
+            ACTIVE DEPLOYMENT REVIEW
+          </span>
+        </div>
+
+        <div className="mt-7 grid gap-4">
+          {productionBlockers.map((item) => (
+            <div
+              key={item.blocker}
+              className="grid gap-5 rounded-3xl border border-white/10 bg-black/20 p-5 lg:grid-cols-12 lg:items-center"
+            >
+              <div className="lg:col-span-5">
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-slate-500">
+                  Blocker
+                </p>
+                <h3 className="mt-2 font-bold text-white">{item.blocker}</h3>
+              </div>
+
+              <div className="lg:col-span-2">
+                <p className="text-xs text-slate-500">Severity</p>
+                <div className="mt-2">
+                  <Pill value={item.severity} />
+                </div>
+              </div>
+
+              <div className="lg:col-span-2">
+                <p className="text-xs text-slate-500">Owner</p>
+                <p className="mt-1 text-sm font-semibold text-slate-200">{item.owner}</p>
+              </div>
+
+              <div className="lg:col-span-3">
+                <p className="text-xs text-slate-500">Required Action</p>
+                <p className="mt-1 text-sm font-semibold text-slate-200">{item.action}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }
 
